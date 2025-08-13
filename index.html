@@ -4,76 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PwnBuilder - Generador de Comandos</title>
-	<link rel="manifest" href="/PwnBuilder/manifest.json">
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/PwnBuilder/sw.js')
-                .then(reg => console.log('Service Worker registrado con éxito.', reg.scope))
-                .catch(err => console.log('Fallo en el registro del Service Worker:', err));
-        });
-    }
-</script>
-    </head>
+    
+    <link rel="manifest" href="/PwnBuilder/manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/PwnBuilder/sw.js')
+                    .then(reg => console.log('Service Worker registrado con éxito.', reg.scope))
+                    .catch(err => console.log('Fallo en el registro del Service Worker:', err));
+            });
+        }
+    </script>
+    
+    <style>
+        /* Estilos generales y fondo oscuro */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        h1, h2 {
+            color: #00ff88;
+        }
+
+        /* Estilos del logo */
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 150px; /* Ajusta el tamaño de la imagen */
+            height: auto;
+        }
+
+        hr {
+            border: 1px solid #00ff88;
+            width: 80%;
+            margin: 20px 0;
+        }
+        
+        /* Estilos del selector de herramientas */
+        select {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #00ff88;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1em;
+        }
+
+        /* Estilos del contenedor del formulario de herramientas */
+        #toolFormContainer {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        /* Estilos para los formularios de herramientas */
+        .form-section {
+            margin-bottom: 20px;
+        }
+        
+        .form-section h3 {
+            color: #00ff88;
+            border-bottom: 1px solid #00ff88;
+            padding-bottom: 5px;
+        }
+        
+        .form-section label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        
+        .form-section input, .form-section select {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 10px;
+            background-color: #2b2b2b;
+            border: 1px solid #00ff88;
+            color: #e0e0e0;
+            border-radius: 4px;
+        }
+        
+        .form-section button {
+            background-color: #00ff88;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .command-box {
+            background-color: #000;
+            padding: 15px;
+            border: 2px solid #00ff88;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .command-box h4 {
+            color: #00ff88;
+            margin-top: 0;
+        }
+        
+        .command-box p {
+            color: #e0e0e0;
+            word-wrap: break-word;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
 <body>
+    
+    <div class="logo-container">
+        <img src="/PwnBuilder/logo.png" alt="PwnBuilder Logo">
+    </div>
 
     <header>
         <h1>PwnBuilder</h1>
         <p>Generador de Comandos para CTFs</p>
     </header>
-
     <hr>
-
     <h2>Selecciona una herramienta:</h2>
     <select id="toolSelector" onchange="loadToolForm()">
         <option value="">-- Elige una herramienta --</option>
-	<option value="aircrackng">Aircrack</option>
-	<option value="aireplayng">Aireplay</option>
-	<option value="airmonng">Airmon</option>
-	<option value="airodumpng">Airodump</option>
-	<option value="arpspoof">Arpspoof</option>
-	<option value="binwalk">Binwalk</option>
-	<option value="cewl">Cewl</option>
-	<option value="commix">Commix</option>
-	<option value="crunch">Crunch</option>
-	<option value="dig">Dig</option>
-	<option value="dirb">Dirb</option>
-	<option value="dnsenum">Dnsenum</option>
-	<option value="dsniff">Dsniff</option>
-	<option value="enum4linux">Enum4linux</option>
-	<option value="ettercap">Ettercap</option>
-	<option value="fierce">Fierce</option>
-	<option value="foremost">Foremost</option>
-	<option value="gdb">Gdb</option>
-	<option value="hashcat">Hashcat</option>
-	<option value="hydra">Hydra</option>
-	<option value="jtr">JohnTheRipper</option>
-	<option value="medusa">Medusa</option>
-	<option value="meterpreter">Meterpreter</option>
-	<option value="msfconsole">Msfconsole</option>
-	<option value="netcat">Netcat</option>
-	<option value="netdiscover">Netdiscover</option>
-	<option value="nikto">Nikto</option>
-	<option value="nmap">Nmap</option>
-	<option value="objdump">Objdump</option>
-	<option value="radare2">Radare2</option>
-	<option value="searchsploit">Searchsploit</option>
-	<option value="socat">Socat</option>
-	<option value="sqlmap">Sqlmap</option>
-	<option value="strace">Strace</option>
-	<option value="strings">Strings</option>
-	<option value="tcpdump">Tcpdump</option>
-	<option value="theHarvester">TheHarvester</option>
-	<option value="tshark">Tshark</option>
-	<option value="volatility">Volatility</option>
-	<option value="whois">Whois</option>
-	<option value="wfuzz">Wfuzz</option>
-	<option value="wpscan">Wpscan</option>
-        </select>
-
+        <option value="aircrackng">Aircrack</option>
+        <option value="aireplayng">Aireplay</option>
+        <option value="airmonng">Airmon</option>
+        <option value="airodumpng">Airodump</option>
+        <option value="arpspoof">Arpspoof</option>
+        <option value="binwalk">Binwalk</option>
+        <option value="cewl">Cewl</option>
+        <option value="commix">Commix</option>
+        <option value="crunch">Crunch</option>
+        <option value="dig">Dig</option>
+        <option value="dirb">Dirb</option>
+        <option value="dnsenum">Dnsenum</option>
+        <option value="dsniff">Dsniff</option>
+        <option value="enum4linux">Enum4linux</option>
+        <option value="ettercap">Ettercap</option>
+        <option value="fierce">Fierce</option>
+        <option value="foremost">Foremost</option>
+        <option value="gdb">Gdb</option>
+        <option value="hashcat">Hashcat</option>
+        <option value="hydra">Hydra</option>
+        <option value="jtr">JohnTheRipper</option>
+        <option value="medusa">Medusa</option>
+        <option value="meterpreter">Meterpreter</option>
+        <option value="msfconsole">Msfconsole</option>
+        <option value="netcat">Netcat</option>
+        <option value="netdiscover">Netdiscover</option>
+        <option value="nikto">Nikto</option>
+        <option value="nmap">Nmap</option>
+        <option value="objdump">Objdump</option>
+        <option value="radare2">Radare2</option>
+        <option value="searchsploit">Searchsploit</option>
+        <option value="socat">Socat</option>
+        <option value="sqlmap">Sqlmap</option>
+        <option value="strace">Strace</option>
+        <option value="strings">Strings</option>
+        <option value="tcpdump">Tcpdump</option>
+        <option value="theHarvester">TheHarvester</option>
+        <option value="tshark">Tshark</option>
+        <option value="whois">Whois</option>
+        <option value="wpscan">Wpscan</option>
+        <option value="volatility">Volatility</option>
+    </select>
     <div id="toolFormContainer">
-        </div>
-
+    </div>
+    
     <script src="main.js"></script>
     <script src="tools/nmap.js"></script>
     <script src="tools/hydra.js"></script>
@@ -118,5 +242,5 @@
     <script src="tools/strings.js"></script>
     <script src="tools/volatility.js"></script>
 </body>
-
 </html>
+
