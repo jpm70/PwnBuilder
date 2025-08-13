@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PwnBuilder - Generador de Comandos</title>
+    </head>
+<body>
+
+    <header>
+        <h1>PwnBuilder</h1>
+        <p>Generador de Comandos para CTFs</p>
+    </header>
+
+    <hr>
+
+    <h2>Selecciona una herramienta:</h2>
+    <select id="toolSelector" onchange="loadToolForm()">
+        <option value="">-- Elige una herramienta --</option>
+	<option value="aircrackng">Aircrack</option>
+	<option value="aireplayng">Aireplay</option>
+	<option value="airmonng">Airmon</option>
+	<option value="airodumpng">Airodump</option>
+	<option value="arpspoof">Arpspoof</option>
+	<option value="binwalk">Binwalk</option>
+	<option value="cewl">Cewl</option>
+	<option value="commix">Commix</option>
+	<option value="crunch">Crunch</option>
+	<option value="dig">Dig</option>
+	<option value="dirb">Dirb</option>
+	<option value="dnsenum">Dnsenum</option>
+	<option value="dsniff">Dsniff</option>
+	<option value="enum4linux">Enum4linux</option>
+	<option value="ettercap">Ettercap</option>
+	<option value="fierce">Fierce</option>
+	<option value="foremost">Foremost</option>
+	<option value="gdb">Gdb</option>
+	<option value="hashcat">Hashcat</option>
+	<option value="hydra">Hydra</option>
+	<option value="jtr">JohnTheRipper</option>
+	<option value="medusa">Medusa</option>
+	<option value="meterpreter">Meterpreter</option>
+	<option value="msfconsole">Msfconsole</option>
+	<option value="netcat">Netcat</option>
+	<option value="netdiscover">Netdiscover</option>
+	<option value="nikto">Nikto</option>
+	<option value="nmap">Nmap</option>
+	<option value="objdump">Objdump</option>
+	<option value="radare2">Radare2</option>
+	<option value="searchsploit">Searchsploit</option>
+	<option value="socat">Socat</option>
+	<option value="sqlmap">Sqlmap</option>
+	<option value="strace">Strace</option>
+	<option value="strings">Strings</option>
+	<option value="tcpdump">Tcpdump</option>
+	<option value="theHarvester">TheHarvester</option>
+	<option value="tshark">Tshark</option>
+	<option value="volatility">Volatility</option>
+	<option value="whois">Whois</option>
+	<option value="wfuzz">Wfuzz</option>
+	<option value="wpscan">Wpscan</option>
+        </select>
+
+    <div id="toolFormContainer">
+        </div>
+
+    <script src="main.js"></script>
+    <script src="tools/nmap.js"></script>
+    <script src="tools/hydra.js"></script>
+    <script src="tools/dirb.js"></script>
+    <script src="tools/enum4linux.js"></script>
+    <script src="tools/jtr.js"></script>
+    <script src="tools/netcat.js"></script>
+    <script src="tools/nikto.js"></script>
+    <script src="tools/wfuzz.js"></script>
+    <script src="tools/aircrackng.js"></script>
+    <script src="tools/aireplayng.js"></script>
+    <script src="tools/airmonng.js"></script>
+    <script src="tools/airodumpng.js"></script>
+    <script src="tools/dnsenum.js"></script>
+    <script src="tools/dig.js"></script>
+    <script src="tools/ettercap.js"></script>
+    <script src="tools/hashcat.js"></script>
+    <script src="tools/medusa.js"></script>
+    <script src="tools/msfconsole.js"></script>
+    <script src="tools/searchsploit.js"></script>
+    <script src="tools/sqlmap.js"></script>
+    <script src="tools/tcpdump.js"></script>
+    <script src="tools/theHarvester.js"></script>
+    <script src="tools/tshark.js"></script>
+    <script src="tools/whois.js"></script>
+    <script src="tools/wpscan.js"></script>
+    <script src="tools/meterpreter.js"></script>
+    <script src="tools/socat.js"></script>
+    <script src="tools/arpspoof.js"></script>
+    <script src="tools/binwalk.js"></script>
+    <script src="tools/cewl.js"></script>
+    <script src="tools/commix.js"></script>
+    <script src="tools/crunch.js"></script>
+    <script src="tools/dsniff.js"></script>
+    <script src="tools/fierce.js"></script>
+    <script src="tools/foremost.js"></script>
+    <script src="tools/gdb.js"></script>
+    <script src="tools/netdiscover.js"></script>
+    <script src="tools/objdump.js"></script>
+    <script src="tools/radare2.js"></script>
+    <script src="tools/strace.js"></script>
+    <script src="tools/strings.js"></script>
+    <script src="tools/volatility.js"></script>
+</body>
+</html>
